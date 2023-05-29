@@ -2,9 +2,9 @@
 
 **WIP**
 
-_Requires a kdb+ license and ability to run q_
-_Follow this link to download and setup kdb+ https://code.kx.com/q/learn/install/_
-_Once kdb+ is installed and q is setup, the datastore server can be run by doing `q kVecDb.q -p <port>` in this directory_
+_Requires a kdb+ license and ability to run q._  
+_Follow this link to download and setup kdb+ https://code.kx.com/q/learn/install/_  
+_Once kdb+ is installed and q is setup, the datastore server can be run by doing `q kVecDb.q -p <port>` in this directory._
 
 A vector datastore implementation in kbd+/q.  
 Python client and an example notebook included.
