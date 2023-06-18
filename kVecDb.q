@@ -1,32 +1,44 @@
+// TODO: try with haystack/langchain
+// TODO: optimize data structure, cluster similar? nsw?
 // vecs
-DB: ();
+.kvecdb.DB: ();
 // vecs' data
-DATA: ();
+.kvecdb.DATA: ();
+// tags
+.kvecdb.TAGS: ();
 
-put: {
-    DATA ,: enlist x;
-    DB ,: enlist y;
+.kvecdb.put: {
+    .kvecdb.DATA ,: enlist x;
+    .kvecdb.DB ,: enlist y;
+    .kvecdb.TAGS ,: enlist z;
     };
 
-find: {
-    sims: cosim[x] peach DB;
+.kvecdb.find: {
+    sims: .kvecdb.cosim[x] peach .kvecdb.DB;
     idxs: idesc sims;
-    res: flip `data`sim!((DATA idxs); sims idxs);
+    res: flip `data`sim!((.kvecdb.DATA idxs); sims idxs);
     :res
     };
 
-cosim: {
-    xy: dot[x;y];
-    xx: dot[x;x];
-    yy: dot[y;y];
+.kvecdb.ann_find: {
+    // TODO: implement an ANN vector search
+    };
+
+.kvecdb.cosim: {
+    xy: .kvecdb.dot[x;y];
+    xx: .kvecdb.dot[x;x];
+    yy: .kvecdb.dot[y;y];
 
     res: xy % sqrt[xx] * sqrt[yy];
     :res
     };
 
-dot: {mmu[x; y]};
+.kvecdb.dot: {
+    mmu[x; y]
+    };
 
-reset: {
-    DB: ();
-    DATA: (); 
+.kvecdb.reset: {
+    .kvecdb.DB: ();
+    .kvecdb.DATA: (); 
+    .kvecdb.TAGS: ();
     };
